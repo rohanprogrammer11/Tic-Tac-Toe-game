@@ -1,9 +1,8 @@
-#include <iostream> // Used to handle input and output.
-#include <string>   // Used to handle String data types.
+#include <iostream> 
+#include <string>   
+using namespace std; 
 
-using namespace std; // Avoid writing std:: before every standard library function or object.
 
-// Declare Global Variables
 char board[3][3];          // 3x3 board to store X, O, or number.
 string player_1, player_2; // Names of two Players.
 char currentPlayer = 'x';  // 'x' goes first.
@@ -19,20 +18,20 @@ void initializeBoard() {
 
 // Display the Board
 void displayBoard() {
-    cout << "\n"; // Print a new line for better readability.
+    cout << "\n"; 
 
     for (int i = 0; i < 3; i++) {
         cout << " ";
         for (int j = 0; j < 3; j++) {
-            cout << board[i][j]; // Print each cell in the row.
+            cout << board[i][j]; 
             if (j < 2)
-                cout << " | "; // Print column separator.
+                cout << " | "; 
         }
-        cout << "\n"; // Move to the next line after each row.
+        cout << "\n"; 
         if (i < 2)
-            cout << "---+---+---\n"; // Print row separator.
+            cout << "---+---+---\n"; 
     }
-    cout << " \n "; // Print a new line for better readability.
+    cout << " \n "; 
 }
 
 // Get the Current Player's Name (Ternary Operator)
@@ -50,14 +49,14 @@ bool makemove() {
         return false; // Invalid move.
     }
 
-    int row = (move - 1) / 3; // Calculate the row index.
-    int col = (move - 1) % 3; // Calculate the column index.
+    int row = (move - 1) / 3; 
+    int col = (move - 1) % 3; 
 
     if (board[row][col] == 'x' || board[row][col] == 'o') {
         return false; // Cell already occupied.
     }
 
-    board[row][col] = currentPlayer; // Place the current player's mark on the board.
+    board[row][col] = currentPlayer; 
     return true;                     // Move successful.
 }
 
@@ -85,11 +84,11 @@ bool checkDraw() {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             if (board[i][j] != 'x' && board[i][j] != 'o') {
-                return false; // Found an empty cell, not a draw.
+                return false; 
             }
         }
     }
-    return true; // No empty cells, it's a draw.
+    return true; 
 }
 
 // Switch Player
@@ -105,7 +104,7 @@ int main() {
     cout << "Enter name of Player 2 (o): ";
     getline(cin, player_2);
 
-    char playAgain; // To check if players want to replay
+    char playAgain; 
 
     do {
         initializeBoard(); // Reset board
@@ -134,7 +133,7 @@ int main() {
 
         cout << "Do you want to play again? (y/n): ";
         cin >> playAgain;
-        cin.ignore(); // Clear newline left in buffer
+        cin.ignore(); 
     } while (playAgain == 'y' || playAgain == 'Y');
 
     cout << "Thanks for playing!\n";
